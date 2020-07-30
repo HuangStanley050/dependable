@@ -2,19 +2,18 @@ const express = require("express");
 const router = express.Router();
 const requestPromise = require("request-promise");
 
-router.get("/ticketList", (req, res) => {
+router.get("/ticketList", async (req, res) => {
   res.setHeader("Content-Type", "application/json");
-  handleRequest()
-    .then((response) => {
-      res.json(response);
-    })
-    .catch(function (err) {
-      console.error(`Jira call Failed: ${err}`);
-      res.json(err);
-    })
-    .finally(() => {
-      res.end();
-    });
+
+  try {
+    const response = await handleRequest();
+    res.json(response);
+  } catch (e) {
+    console.error(`Jira call Failed: ${err}`);
+    res.json(err);
+  } finally {
+    res.end();
+  }
 });
 
 const handleRequest = async () => {
