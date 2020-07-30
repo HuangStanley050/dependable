@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-      "start": "nodemon app.js"
+      "start": "NODE_TLS_REJECT_UNAUTHORIZED=0 nodemon app.js"
     },
     "dependencies": {
       "dotenv": "^8.2.0",
