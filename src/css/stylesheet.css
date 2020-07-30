@@ -1,13 +1,20 @@
-html{
-    font-family: 'Courier New', Courier, monospace;
+html {
+  min-height: 100vh;
 }
-.graph{
-    margin: 0 auto;
-    margin-top: 5rem;
-    width: 90vw;
+.graph {
+  margin: 0 auto;
+  width: 90vw;
 }
-.PageHeader{
-    display: flex;
-    justify-content: center;
-    height: 20rem;
+text {
+    font-family: Inter, Arial, sans-serif !important;
+  }
+.PageHeader {
+  display: flex;
+  justify-content: center;
+  height: 20rem;
+  margin-top: 2rem;
+}
+
+Row{
+    margin: 1rem;
 }
