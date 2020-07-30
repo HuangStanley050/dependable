@@ -33,7 +33,6 @@ const processData = (stories) =>
 
 const Gantt = () => {
   const rawData = useContext(DataContext);
-  console.log(rawData)
   if (!rawData) {
     return null;
   }
