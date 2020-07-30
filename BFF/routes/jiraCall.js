@@ -6,7 +6,7 @@ router.get("/ticketList", async (req, res) => {
   res.setHeader("Content-Type", "application/json");
 
   try {
-    const response = await handleRequest();
+    const response = await fetchData("https://jira-uat.auiag.corp/rest/api/2/search?jql=PROJECT+%3D+%22Self+Service+Journey%22+AND+type+%3D+Story+AND++statusCategory+%21%3D+Done&maxResults=60");
     res.json(response);
   } catch (e) {
     console.error(`Jira call Failed: ${err}`);
@@ -16,10 +16,11 @@ router.get("/ticketList", async (req, res) => {
   }
 });
 
-const handleRequest = async () => {
-  const response = await requestPromise.get({
-    url:
-      "https://jira-uat.auiag.corp/rest/api/2/search?jql=PROJECT+%3D+%22Self+Service+Journey%22+AND+type+%3D+Story+AND++statusCategory+%21%3D+Done&maxResults=60",
+const fetchData = async (url) => {
+  // can await other promises here and use loops or whatever.
+
+  return await requestPromise.get({
+    url,
     headers: {
       Authorization:
         "Basic " +
@@ -29,10 +30,6 @@ const handleRequest = async () => {
     },
     json: true,
   });
-
-  // can await other promises here and use loops or whatever.
-
-  return response;
 };
 
 module.exports = router;
