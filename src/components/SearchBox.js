@@ -9,7 +9,9 @@ function SearchBox() {
     setSearch(e.target.value);
   };
   const searchBFF = async () => {
-    let result = await axios.post(`http://localhost:9000/ticketType/${search}`);
+    let result = await axios.get(
+      `http://localhost:9000/ticketList?type=${search}`
+    );
     console.log(result);
   };
 
