@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Chart } from "react-google-charts";
+import naturalCompare from "natural-compare";
 import DataContext from "./DataContext";
 import canBeIncluded from "../utils/canBeIncluded";
 import daysToMilliseconds from "../utils/daysToMilliseconds";
@@ -20,11 +21,12 @@ const columns = [
 const processData = (stories, sourceProjectKey) => {
   const sourceStories = stories
     .filter((story) => story.project.key === sourceProjectKey)
-    .filter((story) => canBeIncluded(story, stories, sourceProjectKey));
+    .filter((story) => canBeIncluded(story, stories, sourceProjectKey))
+    .sort((story1, story2) => naturalCompare(story1.key, story2.key));
 
-  const dependencies = sourceStories.flatMap((story) =>
-    getDependencies(story.dependencies, stories)
-  );
+  const dependencies = sourceStories
+    .flatMap((story) => getDependencies(story.dependencies, stories))
+    .sort((story1, story2) => naturalCompare(story1.key, story2.key));
 
   return [...sourceStories, ...dependencies].map((story) => [
     story.key,

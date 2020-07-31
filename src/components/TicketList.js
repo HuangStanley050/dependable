@@ -42,12 +42,11 @@ const TicketList = ({ sourceProjectKey }) => {
         </p>
 
         {data.map((story) => (
-          <p key={story.key}>
+          <div key={story.key} style={{ marginBottom: "10px" }}>
             <span style={{ color: COLOUR_MAP[story.project.key] }}>
               {story.key} - {story.title}
             </span>
             : Dependent on
-            <br />
             <ul style={{ marginLeft: "40px" }}>
               {getDependencies(story.dependencies, rawData)
                 .sort((dependency1, dependency2) =>
@@ -72,7 +71,7 @@ const TicketList = ({ sourceProjectKey }) => {
                   </li>
                 ))}
             </ul>
-          </p>
+          </div>
         ))}
         <div className="Spacer White" />
       </Column>
