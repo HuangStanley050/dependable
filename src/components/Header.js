@@ -7,6 +7,7 @@ import {
   getCssUrl,
   getFavicon,
 } from "@iag-packages/chroma-react/lib/utils/cdn";
+import "../css/stylesheet.css"
 
 const brand = "chroma";
 
@@ -21,9 +22,8 @@ function HeaderBanner() {
 
       <div className="PageHeader">
         <Image
-          src="https://i.imgur.com/aDU92jO.jpg"
+          src="https://i.imgur.com/zws1zfa.png"
           alt="Page Heading Logo"
-          height="300"
         />
       </div>
     </>

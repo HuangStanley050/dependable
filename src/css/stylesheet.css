@@ -1,6 +1,10 @@
 html {
-  min-height: 100vh;
+  height: 100%;
 }
+html, main, .l-main__container, .l-main__container > *{
+    /* background-color: #f5f5f5 !important; */
+}
+
 .graph {
   margin: 0 auto;
   width: 90vw;
@@ -12,9 +16,4 @@ text {
   display: flex;
   justify-content: center;
   height: 20rem;
-  margin-top: 2rem;
-}
-
-Row{
-    margin: 1rem;
 }

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Chart } from "react-google-charts";
 import DataContext from "./DataContext";
-import canBeIncluded from "../utils/canBeIncluded"
+import canBeIncluded from "../utils/canBeIncluded";
 import daysToMilliseconds from "../utils/daysToMilliseconds";
 
 const columns = [
@@ -67,6 +67,8 @@ const Gantt = () => {
           trackHeight: 50,
           sortTasks: true,
           percentEnabled: false,
+          innerGridTrack: { fill: "#fff" },
+          innerGridDarkTrack: { fill: "#fff" },
         },
       }}
     />
