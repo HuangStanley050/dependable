@@ -33,7 +33,9 @@ const processData = (stories, sourceProjectKey) => {
     story.sprint?.startDate && new Date(story.sprint.startDate),
     story.sprint?.endDate && new Date(story.sprint.endDate),
     story.estimatedDurationDays &&
-      daysToMilliseconds(story.estimatedDurationDays),
+      daysToMilliseconds(
+        story.points ? story.points * 5 : story.estimatedDurationDays
+      ),
     100,
     story.dependencies.join(","),
   ]);
