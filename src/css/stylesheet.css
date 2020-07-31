@@ -8,6 +8,13 @@ main,
   /* background-color: #fafbfb !important; */
 }
 
+.Wrapper{
+  display: flex;
+  flex-direction: column; 
+  width: 100vw;
+  min-height: 100vh;
+ }
+
 .graph {
   margin: 0 auto;
   width: 90vw;
@@ -38,8 +45,8 @@ text {
 
 .CustomRow{
   display: flex;
-  padding-left: 20vw;
-  padding-right: 20vw;
+  padding-left: 12vw;
+  padding-right: 12vw;
 }
 
 .Grey{

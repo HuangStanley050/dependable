@@ -1,7 +1,7 @@
 import React from "react";
 import { Image } from "@iag-packages/chroma-react/lib/components";
 import "../css/stylesheet.css";
-import { Column, Row, Container } from "@iag-packages/chroma-react/lib/layouts";
+import { Column, Row } from "@iag-packages/chroma-react/lib/layouts";
 
 function ProjectInfomation() {
   return (
@@ -23,10 +23,10 @@ function ProjectInfomation() {
             </span>
           </Row>
         </Column>
-        <Column className="flexDirection" flex={true} justifyContent="center">
+        <Column className="flexDirection" flex={true} justifyContent="center" alignItems="center">
           <Image
             src={require("../assets/problem_statement.png")}
-            height={300}
+            width={600}
             alt="Problem Statement Image"
           />
         </Column>
@@ -34,10 +34,10 @@ function ProjectInfomation() {
       <div className="Spacer Grey" />
       <div className="Spacer White" />
       <div className="CustomRow">
-        <Column className="flexDirection" flex={true} justifyContent="center">
+        <Column className="flexDirection" flex={true} justifyContent="center" alignItems="center">
           <Image
             src={require("../assets/dependable-transparent_Blue.png")}
-            height={500}
+            width={500}
             alt="Problem Statement Image"
           />
         </Column>

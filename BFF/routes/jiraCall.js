@@ -65,6 +65,7 @@ const normaliseIssue = async (issueId, results) => {
 
     const normalisedIssue = {
       key: issue.key,
+      title: issue.fields.summary,
       project: {
         key: issue.fields.project.key,
         name: issue.fields.project.name,
