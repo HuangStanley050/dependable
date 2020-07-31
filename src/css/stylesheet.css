@@ -1,8 +1,11 @@
 html {
   height: 100%;
 }
-html, main, .l-main__container, .l-main__container > *{
-    /* background-color: #f5f5f5 !important; */
+html,
+main,
+.l-main__container,
+.l-main__container > * {
+  /* background-color: #fafbfb !important; */
 }
 
 .graph {
@@ -10,10 +13,38 @@ html, main, .l-main__container, .l-main__container > *{
   width: 90vw;
 }
 text {
-    font-family: Inter, Arial, sans-serif !important;
-  }
+  font-family: Inter, Arial, sans-serif !important;
+}
+
+.flexDirection{
+  flex-direction: column;
+}
+
+
 .PageHeader {
+  height: 50vh !important;
+  background: url("../assets/header_background.png") center no-repeat;;
+  background-size: cover;
+}
+.PageHeadingText{
+  height: inherit;
+  padding-top: 15vh;
+}
+
+.Spacer{
+  height: 10rem;
+  width: 100vw;
+}
+
+.CustomRow{
   display: flex;
-  justify-content: center;
-  height: 20rem;
+  padding-left: 20vw;
+  padding-right: 20vw;
+}
+
+.Grey{
+  background-color: #fafbfb !important;
+}
+.White{
+  background-color: #fff !important;
 }
