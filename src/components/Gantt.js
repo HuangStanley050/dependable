@@ -24,9 +24,10 @@ const processData = (stories, sourceProjectKey) => {
     .filter((story) => canBeIncluded(story, stories, sourceProjectKey))
     .sort((story1, story2) => naturalCompare(story1.key, story2.key));
 
-  const dependencies = sourceStories
+  let dependencies = sourceStories
     .flatMap((story) => getDependencies(story.dependencies, stories))
     .sort((story1, story2) => naturalCompare(story1.key, story2.key));
+  dependencies = [...new Set(dependencies)];
 
   return [...sourceStories, ...dependencies].map((story) => [
     story.key,
