@@ -1,6 +1,11 @@
 html {
   height: 100%;
 }
+
+p, span{
+  font-size: 1.2rem !important;
+}
+
 html,
 main,
 .l-main__container,
@@ -24,7 +29,7 @@ text {
 
 
 .PageHeader {
-  height: 43rem !important;
+  height: 50rem !important;
   background: url("../assets/header_background.png") center no-repeat;;
   background-size: cover;
 }
@@ -34,7 +39,7 @@ text {
 }
 
 .Spacer{
-  height: 10rem;
+  height: 5rem;
   width: 100vw;
 }
 .SmallSpacer{

@@ -13,20 +13,19 @@ const brand = "chroma";
 function HeaderBanner() {
   return (
     <>
-      <Container>
-        <Row>
-          <Column alignItems="center">
-            <h3>DEPENDENT</h3>
-          </Column>
-          <Column flex={true} alignItems="center" justifyContent="end"> 
-            <Image
-              src={require("../assets/dependable-transparent_Blue-logo.png")}
-              height={50}
-              alt="Header Logo"
-            />
-          </Column>
-        </Row>
-      </Container>
+      <div className="CustomRow">
+        <Column flex={true} alignItems="center">
+          <Image
+            src={require("../assets/dependable-transparent_Blue-logo.png")}
+            height={50}
+            alt="Header Logo"
+            margin={{ top: 3 }}
+          />
+          <h3 style={{ margin: 0, marginLeft: 20, marginTop: ".75rem" }}>
+            DEPENDENT
+          </h3>
+        </Column>
+      </div>
       <div className="PageHeader">
         <Helmet>
           <link href={getCssUrl(brand)} rel="stylesheet" />
@@ -37,13 +36,13 @@ function HeaderBanner() {
           <Row>
             <Column>
               <Row justifyContent="center">
-                <h2>The perfect project management companion</h2>
+                <h1>The perfect project management companion</h1>
               </Row>
               <Row justifyContent="center">
-                <h5>
+                <h3>
                   Take the manual process out of project reporting, have more
                   valuable conversations with your partnering teams.
-                </h5>
+                </h3>
               </Row>
             </Column>
             <Column></Column>

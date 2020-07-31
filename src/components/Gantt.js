@@ -60,8 +60,6 @@ const Gantt = ({ sourceProjectKey }) => {
   return (
     <div className="CustomRow">
       <Column>
-        <h3>Gantt Chart</h3>
-
         <Chart
           chartType="Gantt"
           data={[columns, ...data]}

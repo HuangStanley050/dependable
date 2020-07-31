@@ -18,7 +18,8 @@ function App() {
       <ProjectInformation />
       <div className="CustomRow">
         <Column>
-          <span>Enter project code to search for dependencies</span>
+          <h2>Project View</h2>
+          <span>Enter your JIRA project code or key and press 'Create'</span>
           <SearchBox doSearch={setSearch} />
         </Column>
       </div>

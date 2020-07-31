@@ -31,7 +31,7 @@ const TicketList = ({ sourceProjectKey }) => {
   return (
     <div className="CustomRow">
       <Column>
-        <h3>Ticket List</h3>
+        <h3>Unscheduled Features</h3>
         <p>
           The following tickets were unable to be displayed in the Gantt chart
           due to one or more unscheduled dependencies:

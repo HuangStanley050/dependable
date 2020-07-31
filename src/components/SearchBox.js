@@ -8,19 +8,17 @@ function SearchBox({ doSearch }) {
   };
 
   return (
-    <Form onSubmit={(e) => {
-      e.preventDefault()
+    <Form
+      onSubmit={(e) => {
+        e.preventDefault();
 
-      doSearch(search);
-    }}>
-        <Input placeholder="Search" onChange={inputSearch}/>
-        <Button
-          id="primaryButton"
-          primary
-          type="submit"
-        >
-          Search
-        </Button>
+        doSearch(search);
+      }}
+    >
+      <Input placeholder="Search" onChange={inputSearch} />
+      <Button id="primaryButton" primary type="submit" margin={{ left: 2 }}>
+        Create
+      </Button>
     </Form>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Image } from "@iag-packages/chroma-react/lib/components";
+import { Image, Icon } from "@iag-packages/chroma-react/lib/components";
 import "../css/stylesheet.css";
 import { Column, Row } from "@iag-packages/chroma-react/lib/layouts";
 
@@ -10,7 +10,7 @@ function ProjectInformation() {
       <div className="CustomRow Grey">
         <Column className="flexDirection" flex={true} justifyContent="center">
           <Row>
-            <h3>Problem Statement</h3>
+            <h2>Problem Statement</h2>
           </Row>
           <Row>
             <span>
@@ -53,11 +53,11 @@ function ProjectInformation() {
         </Column>
         <Column className="flexDirection" flex={true} justifyContent="center">
           <Row>
-            <h3>Introducing: Dependable</h3>
+            <h2>Introducing: Dependable</h2>
           </Row>
           <Row>
             <span>
-              Dependable is the perfect project management companion. Fully
+              Dependable is the perfect project management companion.<br/><br/> Fully
               integrated with all JIRA projects, our app uses Google Charts to
               dynamically display all upcoming features and their delivery
               timeline, including linking dependent features between teams and
@@ -73,14 +73,15 @@ function ProjectInformation() {
       <div className="CustomRow Grey">
         <Column className="flexDirection" flex={true} justifyContent="center">
           <Row>
-            <h3>Populate your chart in two easy steps</h3>
+            <h2>Populate your chart in two easy steps</h2>
           </Row>
           <Row>
             <span>
-              (1) And any dependencies to your JIRA project’s stories
+              <Icon name="check" /> Add any dependencies to your JIRA
+              project’s stories
               <br />
-              (2) Search for your JIRA project (either by name or by code) in
-              the search box below
+              <Icon name="check" /> Search for your JIRA project (either
+              by name or by code) in the search box below
             </span>
           </Row>
         </Column>
