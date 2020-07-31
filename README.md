@@ -1,4 +1,6 @@
-# dependable
+![logo](./media/LOGO.png)
+
+# Dependable
 
 Hackathon project to attempt to model inter-team dependencies transparently and beautifully
 
@@ -8,7 +10,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ![screen1](./media/screenshot1.png)
 
-![screen2](./media/screenshot2.png)
+![screen2](./media/improveGantt.png)
+
+![improve](./media/improveGantt2.png)
 
 ![screen3](./media/screenshot3.png)
 
