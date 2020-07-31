@@ -1,0 +1,85 @@
+import React from "react";
+import { Image } from "@iag-packages/chroma-react/lib/components";
+import "../css/stylesheet.css";
+import { Column, Row, Container } from "@iag-packages/chroma-react/lib/layouts";
+
+function ProjectInfomation() {
+  return (
+    <div>
+      <div className="Spacer Grey" />
+      <div className="CustomRow Grey">
+        <Column className="flexDirection" flex={true} justifyContent="center">
+          <Row>
+            <h3>Problem Statement</h3>
+          </Row>
+          <Row>
+            <span>
+              When building apps at IAG, every project at IAG has multiple teams
+              trying to coordinate work. There are entire departments setup to
+              manage programs in a manual way. The Serenity project has 20 teams
+              all with different timelines, it’s impossible to see at a glance
+              when teams have scheduled in work. Tracking all dependent teams is
+              a nightmare.
+            </span>
+          </Row>
+        </Column>
+        <Column className="flexDirection" flex={true} justifyContent="center">
+          <Image
+            src={require("../assets/problem_statement.png")}
+            height={300}
+            alt="Problem Statement Image"
+          />
+        </Column>
+      </div>
+      <div className="Spacer Grey" />
+      <div className="Spacer White" />
+      <div className="CustomRow">
+        <Column className="flexDirection" flex={true} justifyContent="center">
+          <Image
+            src={require("../assets/dependable-transparent_Blue.png")}
+            height={500}
+            alt="Problem Statement Image"
+          />
+        </Column>
+        <Column className="flexDirection" flex={true} justifyContent="center">
+          <Row>
+            <h3>Introducing: Dependable</h3>
+          </Row>
+          <Row>
+            <span>
+              Dependable is the perfect project management companion. Fully
+              integrated with all JIRA projects, our app uses Google Charts to
+              dynamically display all upcoming features and their delivery
+              timeline, including linking dependent features between teams and
+              providing a full delivery plan. This eliminates the manual process
+              involved in trolling through JIRA backlogs, speaking to partner
+              teams, updating delivery dates and reporting on timelines.
+            </span>
+          </Row>
+        </Column>
+      </div>
+      <div className="Spacer White" />
+      <div className="Spacer Grey" />
+      <div className="CustomRow Grey">
+        <Column>
+          <Row>
+            <h3>Populate your chart in two easy steps</h3>
+          </Row>
+          <Row>
+            <span>
+              (1) And any dependencies to your JIRA project’s stories
+              <br />
+              (2) Search for your JIRA project (either by name or by code) in
+              the search box below
+            </span>
+          </Row>
+        </Column>
+        <Column></Column>
+      </div>
+      <div className="Spacer Grey" />
+      <div className="Spacer White" />
+    </div>
+  );
+}
+
+export default ProjectInfomation;
