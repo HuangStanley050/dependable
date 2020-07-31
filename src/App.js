@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import Gantt from "./components/Gantt";
+import TicketList from "./components/TicketList";
 import DataFetcher from "./components/DataFetcher";
 import { Main, Row, Container } from "@iag-packages/chroma-react/lib/layouts";
 
@@ -13,7 +14,6 @@ function App() {
       <HeaderBanner />
       <Main>
         <Container fluid>
-          
           <Row>
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -22,21 +22,22 @@ function App() {
             </p>
           </Row>
           <SearchBox />
-          <Row>
-            <h3>Gantt Chart</h3>
-          </Row>
-          <Row>
-            <div className="graph">
-              <Suspense fallback="Loading...">
-                <DataFetcher>
+          <Suspense fallback="Loading...">
+            <DataFetcher>
+              <Row>
+                <h3>Gantt Chart</h3>
+              </Row>
+              <Row>
+                <div className="graph">
                   <Gantt />
-                </DataFetcher>
-              </Suspense>
-            </div>
-          </Row>
-          <Row>
-            <h3>Ticket List</h3>
-          </Row>
+                </div>
+              </Row>
+              <Row>
+                <h3>Ticket List</h3>
+                <TicketList />
+              </Row>
+            </DataFetcher>
+          </Suspense>
         </Container>
       </Main>
       <FooterBanner />

@@ -3,6 +3,7 @@ import { Chart } from "react-google-charts";
 import DataContext from "./DataContext";
 import canBeIncluded from "../utils/canBeIncluded";
 import daysToMilliseconds from "../utils/daysToMilliseconds";
+import getDependencies from "../utils/getDependencies";
 
 const columns = [
   { type: "string", label: "Task ID" },
@@ -14,13 +15,6 @@ const columns = [
   { type: "number", label: "Percent Complete" },
   { type: "string", label: "Dependencies" },
 ];
-
-const getDependencies = (storyIds, stories) => {
-  return storyIds.flatMap((storyId) => {
-    const story = stories.find((story) => story.key === storyId);
-    return [story, ...getDependencies(story.dependencies, stories)];
-  });
-};
 
 const processData = (stories, sourceProjectKey) => {
   const sourceStories = stories
