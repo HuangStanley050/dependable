@@ -31,6 +31,16 @@ router.get("/ticketList", async (req, res) => {
   }
 });
 
+const getSprint = (sprintsArray) => {
+  return sprintsArray && sprintsArray.map(sprint => sprint.match(/startDate=(\d{4}-\d{2}-\d{2}).*endDate=(\d{4}-\d{2}-\d{2})/i))
+    .reduce((sprint, currentMatch) => {
+      return {
+        startDate: sprint?.startDate < currentMatch?.[1] ? sprint?.startDate : currentMatch?.[1],
+        endDate: sprint?.endDate > currentMatch?.[2] ? sprint?.endDate : currentMatch?.[2]
+      }
+    }, null)
+}
+
 const normaliseIssue = async (issueId, results) => {
   if (cache[issueId]) {
     return cache[issueId]
@@ -47,11 +57,7 @@ const normaliseIssue = async (issueId, results) => {
       }
     );
 
-    // if (issuelinks.length) {
-    //   await normaliseIssues(issuelinks.map((issuelink) => issuelink.inwardIssue.id), results)
-    // }
-
-    cache[issueId] = {
+    const normalisedIssue = {
       key: issue.key,
       project: {
         key: issue.fields.project.key,
@@ -67,7 +73,13 @@ const normaliseIssue = async (issueId, results) => {
       dependencies: issuelinks.map((issuelink) => issuelink.inwardIssue.key),
     }
 
-    return cache[issueId]
+    if(issue.fields.customfield_11101 && issue.fields.customfield_11101.length) {
+      normalisedIssue.sprint = getSprint(issue.fields.customfield_11101)
+    }
+
+    cache[issueId] = normalisedIssue;
+
+    return normalisedIssue
   } catch (e) {
     console.log("normaliseIssue failed: ", e)
   }
