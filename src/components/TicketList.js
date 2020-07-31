@@ -5,8 +5,7 @@ import getDependencies from "../utils/getDependencies";
 
 const processData = (stories, sourceProjectKey) => {
   const sourceStories = stories
-    .filter((story) => story.project.key === sourceProjectKey)
-    .filter((story) => !canBeIncluded(story, stories, sourceProjectKey));
+    .filter((story) => story.project.key === sourceProjectKey && !canBeIncluded(story, stories, sourceProjectKey));
 
   return sourceStories;
 };
