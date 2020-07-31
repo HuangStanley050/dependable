@@ -28,7 +28,7 @@ const processData = (stories, sourceProjectKey) => {
   return [...sourceStories, ...dependencies].map((story) => [
     story.key,
     story.key,
-    story.epic,
+    story.project.key,
     story.sprint?.startDate && new Date(story.sprint.startDate),
     story.sprint?.endDate && new Date(story.sprint.endDate),
     story.estimatedDurationDays &&
