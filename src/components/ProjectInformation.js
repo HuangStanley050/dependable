@@ -121,23 +121,16 @@ function ProjectInformation() {
           </Row>
           <Row>
             <span>
-              "For a while now as an IM, I struggle to keep up with when the SSC
-              dependency tickets will drop and when the SSC tickets can be
-              unblocked.
-              <br />
-              <br />
-              Dependable is the solution that I am looking for! Gone are the
-              days of manually mapping the dependency cards from other JIRA
-              backlog with ours or creating an ad-hoc chart to have
-              prioritization and scheduling discussion with other enabling
-              teams.
-              <br />
-              <br />
-              I now have confidence of a consistently up-to-date view that
+              "I now have confidence of a consistently up-to-date view that
               generates real-time, automatically and focus on having
               conversations with other teams or sprint planning"
-              <br />
               <br />- Catherine Thum
+              <br />
+              <br />
+              “Dependable provides an immediate and accurate view of project
+              dependencies, with real time updates, that enable faster reporting
+              and more efficient decision making. A delivery lead’s dream.”
+              <br />- Gerard Kerr
             </span>
           </Row>
         </Column>
@@ -151,24 +144,29 @@ function ProjectInformation() {
           </Row>
           <Row>
             <span>
-              <Icon name="check" color="green"/> Fully integrated with JIRA 
+              <Icon name="check" color="green" /> Fully integrated with JIRA
               <br />
-              <Icon name="check" color="green"/> Fully published on Github
+              <Icon name="check" color="green" /> Fully published on Github
               <br />
-              <Icon name="check" color="green"/> No mocked data, all real API requests.
+              <Icon name="check" color="green" /> No mocked data, all real API
+              requests.
               <br />
-              <Icon name="check" color="green"/> Works for any JIRA project at IAG 
+              <Icon name="check" color="green" /> Works for any JIRA project at
+              IAG
               <br />
-              <Icon name="check" color="green"/> Works both on production and
+              <Icon name="check" color="green" /> Works both on production and
               <br />
-              <Icon name="check" color="green"/> UAT  Clear pipeline of new features 
+              <Icon name="check" color="green" /> UAT Clear pipeline of new
+              features
               <br />
               <br />
-              Future State Filters Export
+              Future State
               <br />
-              <Icon name="minus" /> Formats 
+              <Icon name="minus" /> Filters Export
               <br />
-              <Icon name="minus" /> Estimation 
+              <Icon name="minus" /> Formats
+              <br />
+              <Icon name="minus" /> Estimation
               <br />
               <Icon name="minus" /> variances
             </span>
