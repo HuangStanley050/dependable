@@ -27,13 +27,26 @@ router.get("/ticketList", async (req, res) => {
 });
 
 const getSprint = (sprintsArray) => {
-  return sprintsArray && sprintsArray.map(sprint => sprint.match(/startDate=(\d{4}-\d{2}-\d{2}).*endDate=(\d{4}-\d{2}-\d{2})/i))
-    .reduce((sprint, currentMatch) => {
-      return {
-        startDate: sprint?.startDate < currentMatch?.[1] ? sprint?.startDate : currentMatch?.[1],
-        endDate: sprint?.endDate > currentMatch?.[2] ? sprint?.endDate : currentMatch?.[2]
-      }
-    }, null)
+  let sprint = {}
+  if (sprintsArray) {
+    const sprints = sprintsArray.map(sprint => {
+      return sprint.match(/startDate=(\d{4}-\d{2}-\d{2}).*endDate=(\d{4}-\d{2}-\d{2})/i) ||
+        sprint.match(/(\d{1,2}\/\d{1,2}) - (\d{1,2}\/\d{1,2}),startDate/i)
+          .map((str, index) => {
+            if (index === 0) return ""
+
+            return str.replace(/(\d{1,2})\/(\d{1,2})/, (matcher, p1, p2) => ["2020", p2.padStart(2, '0'), p1].join('-'))
+          })
+  })
+
+    sprint = sprints
+      .reduce((sprint, currentMatch) => ({
+          startDate: sprint?.startDate < currentMatch?.[1] ? sprint?.startDate : currentMatch?.[1],
+          endDate: sprint?.endDate > currentMatch?.[2] ? sprint?.endDate : currentMatch?.[2]
+        }), null)
+  }
+
+  return sprint
 }
 
 const normaliseIssue = async (issueId, results) => {
@@ -66,7 +79,7 @@ const normaliseIssue = async (issueId, results) => {
       dependencies: issuelinks.map((issuelink) => issuelink.inwardIssue.key),
     };
 
-    if(issue.fields.customfield_11101 && issue.fields.customfield_11101.length) {
+    if (issue.fields.customfield_11101 && issue.fields.customfield_11101.length) {
       normalisedIssue.sprint = getSprint(issue.fields.customfield_11101)
     }
 
