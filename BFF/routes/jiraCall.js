@@ -17,7 +17,7 @@ router.get("/ticketList", async (req, res) => {
 
     const result = await normaliseResponse(response);
 
-    cache = {}
+    // cache = {}
     res.json(result);
   } catch (e) {
     console.error("Jira call Failed: ", e);
