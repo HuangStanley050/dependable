@@ -93,8 +93,8 @@ const options = {
   suspense: true,
 };
 
-function DataFetcher({ children }) {
-  const { data } = useFetch("/ticketList", options, []);
+function DataFetcher({ children, search }) {
+  const { data } = useFetch(`/ticketList?type=${search}`, options, [search]);
 
   return <DataContext.Provider value={data}>{children}</DataContext.Provider>;
 }

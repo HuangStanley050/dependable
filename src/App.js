@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import Gantt from "./components/Gantt";
 import TicketList from "./components/TicketList";
 import DataFetcher from "./components/DataFetcher";
@@ -9,6 +9,8 @@ import HeaderBanner from "./components/Header";
 import SearchBox from "./components/SearchBox";
 
 function App() {
+  const [search, setSearch] = useState("")
+
   return (
     <div>
       <HeaderBanner />
@@ -21,9 +23,9 @@ function App() {
               ever since the 1500s
             </p>
           </Row>
-          <SearchBox />
+          <SearchBox doSearch={setSearch} />
           <Suspense fallback="Loading...">
-            <DataFetcher>
+            <DataFetcher search={search}>
               <Row>
                 <h3>Gantt Chart</h3>
               </Row>

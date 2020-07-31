@@ -1,18 +1,11 @@
 import React, { useState } from "react";
 import { Input, Button } from "@iag-packages/chroma-react/lib/components";
 import { Row } from "@iag-packages/chroma-react/lib/layouts";
-import axios from "axios";
 
-function SearchBox() {
+function SearchBox({ doSearch }) {
   const [search, setSearch] = useState("");
   const inputSearch = (e) => {
     setSearch(e.target.value);
-  };
-  const searchBFF = async () => {
-    let result = await axios.get(
-      `http://localhost:9000/ticketList?type=${search}`
-    );
-    console.log(result);
   };
 
   return (
@@ -22,7 +15,7 @@ function SearchBox() {
         id="primaryButton"
         primary
         onClick={() => {
-          searchBFF();
+          doSearch(search);
         }}
       >
         Search
