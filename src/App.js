@@ -1,13 +1,8 @@
-import React, { Suspense, useState } from "react";
+import React, { useState } from "react";
 import Gantt from "./components/Gantt";
 import TicketList from "./components/TicketList";
 import DataFetcher from "./components/DataFetcher";
-import {
-  Column,
-  Main,
-  Row,
-  Container,
-} from "@iag-packages/chroma-react/lib/layouts";
+import { Column } from "@iag-packages/chroma-react/lib/layouts";
 
 import FooterBanner from "./components/Footer";
 import HeaderBanner from "./components/Header";

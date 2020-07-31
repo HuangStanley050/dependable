@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
+import { format } from 'date-fns'
 import DataContext from "./DataContext";
 import canBeIncluded from "../utils/canBeIncluded";
 import getDependencies from "../utils/getDependencies";
-import { Main, Row, Container } from "@iag-packages/chroma-react/lib/layouts";
+import { Row, Container } from "@iag-packages/chroma-react/lib/layouts";
 
 const processData = (stories, sourceProjectKey) => {
   const sourceStories = stories
@@ -36,15 +37,15 @@ const TicketList = ({ sourceProjectKey }) => {
       {data.map((story) => (
         <Row key={story.key}>
           <p>
-            {story.key}: Dependent on
+            <span style={{ fontWeight: 800 }}>{story.key} - {story.title}: Dependent on</span>
             <br />
             <ul class="dependency-list">
               {getDependencies(story.dependencies, rawData).map(
                 (dependency) => (
                   <li key={dependency.key}>
-                    {dependency.key} (
-                    {dependency.sprint
-                      ? `Scheduled to finish ${dependency.sprint.endDate}`
+                    {dependency.key} - {dependency.title} (
+                    {dependency.sprint?.endDate
+                      ? `Scheduled to finish ${format(new Date(dependency.sprint.endDate), 'dd/MM/yyyy')}`
                       : "unscheduled"}
                     )
                   </li>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Input, Button, Form } from "@iag-packages/chroma-react/lib/components";
-import { Row } from "@iag-packages/chroma-react/lib/layouts";
 
 function SearchBox({ doSearch }) {
   const [search, setSearch] = useState("");

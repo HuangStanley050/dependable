@@ -1,7 +1,7 @@
 import React from "react";
 import { Image } from "@iag-packages/chroma-react/lib/components";
 import "../css/stylesheet.css";
-import { Column, Row, Container } from "@iag-packages/chroma-react/lib/layouts";
+import { Column, Row } from "@iag-packages/chroma-react/lib/layouts";
 
 function ProjectInfomation() {
   return (
