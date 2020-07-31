@@ -10,15 +10,10 @@ main,
 
 .Wrapper{
   display: flex;
-  flex-direction: column; 
   width: 100vw;
   min-height: 100vh;
  }
 
-.graph {
-  margin: 0 auto;
-  width: 90vw;
-}
 text {
   font-family: Inter, Arial, sans-serif !important;
 }
@@ -29,7 +24,7 @@ text {
 
 
 .PageHeader {
-  height: 50vh !important;
+  height: 43rem !important;
   background: url("../assets/header_background.png") center no-repeat;;
   background-size: cover;
 }
@@ -40,6 +35,10 @@ text {
 
 .Spacer{
   height: 10rem;
+  width: 100vw;
+}
+.SmallSpacer{
+  height: 5rem;
   width: 100vw;
 }
 
@@ -54,4 +53,9 @@ text {
 }
 .White{
   background-color: #fff !important;
+}
+
+.graph {
+  margin: 0 auto;
+  width: 90vw;
 }

@@ -3,7 +3,7 @@ import { Image } from "@iag-packages/chroma-react/lib/components";
 import "../css/stylesheet.css";
 import { Column, Row } from "@iag-packages/chroma-react/lib/layouts";
 
-function ProjectInfomation() {
+function ProjectInformation() {
   return (
     <div>
       <div className="Spacer Grey" />
@@ -23,7 +23,12 @@ function ProjectInfomation() {
             </span>
           </Row>
         </Column>
-        <Column className="flexDirection" flex={true} justifyContent="center" alignItems="center">
+        <Column
+          className="flexDirection"
+          flex={true}
+          justifyContent="center"
+          alignItems="center"
+        >
           <Image
             src={require("../assets/problem_statement.png")}
             width={600}
@@ -34,7 +39,12 @@ function ProjectInfomation() {
       <div className="Spacer Grey" />
       <div className="Spacer White" />
       <div className="CustomRow">
-        <Column className="flexDirection" flex={true} justifyContent="center" alignItems="center">
+        <Column
+          className="flexDirection"
+          flex={true}
+          justifyContent="center"
+          alignItems="center"
+        >
           <Image
             src={require("../assets/dependable-transparent_Blue.png")}
             width={500}
@@ -61,7 +71,7 @@ function ProjectInfomation() {
       <div className="Spacer White" />
       <div className="Spacer Grey" />
       <div className="CustomRow Grey">
-        <Column>
+        <Column className="flexDirection" flex={true} justifyContent="center">
           <Row>
             <h3>Populate your chart in two easy steps</h3>
           </Row>
@@ -74,7 +84,18 @@ function ProjectInfomation() {
             </span>
           </Row>
         </Column>
-        <Column></Column>
+        <Column
+          className="flexDirection"
+          flex={true}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Image
+            src={require("../assets/laptop1.png")}
+            width={600}
+            alt="Problem Statement Image"
+          />
+        </Column>
       </div>
       <div className="Spacer Grey" />
       <div className="Spacer White" />
@@ -82,4 +103,4 @@ function ProjectInfomation() {
   );
 }
 
-export default ProjectInfomation;
+export default ProjectInformation;

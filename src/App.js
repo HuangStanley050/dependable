@@ -7,7 +7,7 @@ import { Column } from "@iag-packages/chroma-react/lib/layouts";
 import FooterBanner from "./components/Footer";
 import HeaderBanner from "./components/Header";
 import SearchBox from "./components/SearchBox";
-import ProjectInfomation from "./components/ProjectInfomation";
+import ProjectInformation from "./components/ProjectInformation";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="Wrapper flexDirection">
       <HeaderBanner />
-      <ProjectInfomation />
+      <ProjectInformation />
       <div className="CustomRow">
         <Column>
           <span>Enter project code to search for dependencies</span>
@@ -24,10 +24,7 @@ function App() {
       </div>
       <DataFetcher search={search}>
         <Gantt sourceProjectKey={search} />
-        <div className="CustomRow">
-          <h3>Ticket List</h3>
-          <TicketList sourceProjectKey={search} />
-        </div>
+        <TicketList sourceProjectKey={search} />
       </DataFetcher>
       <FooterBanner />
     </div>

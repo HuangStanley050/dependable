@@ -75,6 +75,7 @@ const Gantt = ({ sourceProjectKey }) => {
             },
           }}
         />
+        <div className="SmallSpacer White" />
       </Column>
     </div>
   );
