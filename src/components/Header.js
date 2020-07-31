@@ -22,7 +22,7 @@ function HeaderBanner() {
             margin={{ top: 3 }}
           />
           <h3 style={{ margin: 0, marginLeft: 20, marginTop: ".75rem" }}>
-            DEPENDENT
+            DEPENDABLE
           </h3>
         </Column>
       </div>

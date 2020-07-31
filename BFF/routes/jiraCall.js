@@ -12,7 +12,7 @@ router.get("/ticketList", async (req, res) => {
   }
   try {
     const response = await fetchData(
-      `${process.env.API_JIRA_HOST}/rest/api/2/search?jql=PROJECT+%3D+%22${searchType}%22+AND+type+%3D+Story+AND++statusCategory+%21%3D+Done&maxResults=60`
+      `${process.env.API_JIRA_HOST}/rest/api/2/search?jql=PROJECT+%3D+%22Self+Service+Journey%22+AND+type%20%3D%20Story%20AND%20key%20in%20(ssj-74%2CSSJ-73%2C%20SSJ-42%2C%20SSJ-68%2CSSJ-77%2CSSJ-78%2CSSJ-127%2CSSJ-72)+AND++statusCategory+%21%3D+Done&maxResults=60`
     );
 
     const result = await normaliseResponse(response);

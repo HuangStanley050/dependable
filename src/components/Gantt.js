@@ -60,27 +60,30 @@ const Gantt = ({ sourceProjectKey }) => {
     );
   }
 
+  console.log([columns, ...data]);
   return (
-    <div className="CustomRow">
-      <Column>
-        <Chart
-          chartType="Gantt"
-          data={[columns, ...data]}
-          height={50 * data.length + 50}
-          legendToggle
-          options={{
-            gantt: {
-              trackHeight: 50,
-              sortTasks: true,
-              percentEnabled: false,
-              innerGridTrack: { fill: "#fff" },
-              innerGridDarkTrack: { fill: "#fff" },
-            },
-          }}
-        />
-        <div className="SmallSpacer White" />
-      </Column>
-    </div>
+    <>
+      <div className="CustomRow">
+        <Column>
+          <Chart
+            chartType="Gantt"
+            data={[columns, ...data]}
+            height={50 * data.length + 50}
+            legendToggle
+            options={{
+              gantt: {
+                trackHeight: 50,
+                sortTasks: true,
+                percentEnabled: false,
+                innerGridTrack: { fill: "#fff" },
+                innerGridDarkTrack: { fill: "#fff" },
+              },
+            }}
+          />
+        </Column>
+      </div>
+      <div className="SmallSpacer White" />
+    </>
   );
 };
 
