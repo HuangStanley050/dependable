@@ -1,13 +1,19 @@
-html{
-    font-family: 'Courier New', Courier, monospace;
+html {
+  height: 100%;
 }
-.graph{
-    margin: 0 auto;
-    margin-top: 5rem;
-    width: 90vw;
+html, main, .l-main__container, .l-main__container > *{
+    /* background-color: #f5f5f5 !important; */
 }
-.PageHeader{
-    display: flex;
-    justify-content: center;
-    height: 20rem;
+
+.graph {
+  margin: 0 auto;
+  width: 90vw;
+}
+text {
+    font-family: Inter, Arial, sans-serif !important;
+  }
+.PageHeader {
+  display: flex;
+  justify-content: center;
+  height: 20rem;
 }

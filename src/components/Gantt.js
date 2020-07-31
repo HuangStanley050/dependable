@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
 import { Chart } from "react-google-charts";
 import DataContext from "./DataContext";
+import canBeIncluded from "../utils/canBeIncluded";
+import daysToMilliseconds from "../utils/daysToMilliseconds";
+import getDependencies from "../utils/getDependencies";
 
 const columns = [
   { type: "string", label: "Task ID" },
@@ -13,23 +16,27 @@ const columns = [
   { type: "string", label: "Dependencies" },
 ];
 
-const daysToMilliseconds = (days) => days * 24 * 60 * 60 * 1000;
+const processData = (stories, sourceProjectKey) => {
+  const sourceStories = stories
+    .filter((story) => story.project.key === sourceProjectKey)
+    .filter((story) => canBeIncluded(story, stories, sourceProjectKey));
 
-const canBeIncluded = (story, stories) => true;
+  const dependencies = sourceStories.flatMap((story) =>
+    getDependencies(story.dependencies, stories)
+  );
 
-const processData = (stories) =>
-  stories
-    .filter((story) => canBeIncluded(story, stories))
-    .map((story) => [
-      story.key,
-      story.key,
-      story.epic,
-      new Date(2020, 8, 1),
-      null,
+  return [...sourceStories, ...dependencies].map((story) => [
+    story.key,
+    story.key,
+    story.epic,
+    story.sprint?.startDate && new Date(story.sprint.startDate),
+    story.sprint?.endDate && new Date(story.sprint.endDate),
+    story.estimatedDurationDays &&
       daysToMilliseconds(story.estimatedDurationDays),
-      100,
-      [].join(","),
-    ]);
+    100,
+    story.dependencies.join(","),
+  ]);
+};
 
 const Gantt = () => {
   const rawData = useContext(DataContext);
@@ -37,7 +44,11 @@ const Gantt = () => {
     return null;
   }
 
-  const data = processData(rawData);
+  const data = processData(rawData, "SSJ");
+
+  if (data.length === 0) {
+    return <p>No stories are able to be scheduled!</p>;
+  }
 
   return (
     <Chart
@@ -49,7 +60,9 @@ const Gantt = () => {
         gantt: {
           trackHeight: 50,
           sortTasks: true,
-          percentEnabled: false
+          percentEnabled: false,
+          innerGridTrack: { fill: "#fff" },
+          innerGridDarkTrack: { fill: "#fff" },
         },
       }}
     />

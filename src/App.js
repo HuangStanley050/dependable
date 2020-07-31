@@ -1,14 +1,12 @@
 import React, { Suspense } from "react";
 import Gantt from "./components/Gantt";
+import TicketList from "./components/TicketList";
 import DataFetcher from "./components/DataFetcher";
-import {
-  Main,
-  Row,
-  Container,
-} from "@iag-packages/chroma-react/lib/layouts";
+import { Main, Row, Container } from "@iag-packages/chroma-react/lib/layouts";
 
 import FooterBanner from "./components/Footer";
 import HeaderBanner from "./components/Header";
+import SearchBox from "./components/SearchBox";
 
 function App() {
   return (
@@ -23,21 +21,23 @@ function App() {
               ever since the 1500s
             </p>
           </Row>
-          <Row>
-            <h3>Gantt Chart</h3>
-          </Row>
-          <Row>
-            <div className="graph">
-              <Suspense fallback="Loading...">
-                <DataFetcher>
+          <SearchBox />
+          <Suspense fallback="Loading...">
+            <DataFetcher>
+              <Row>
+                <h3>Gantt Chart</h3>
+              </Row>
+              <Row>
+                <div className="graph">
                   <Gantt />
-                </DataFetcher>
-              </Suspense>
-            </div>
-          </Row>
-          <Row>
-            <h3>Ticket List</h3>
-          </Row>
+                </div>
+              </Row>
+              <Row>
+                <h3>Ticket List</h3>
+                <TicketList />
+              </Row>
+            </DataFetcher>
+          </Suspense>
         </Container>
       </Main>
       <FooterBanner />

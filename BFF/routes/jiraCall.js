@@ -4,12 +4,20 @@ const requestPromise = require("request-promise");
 
 const cache = {}
 
+router.post("/ticketType/:type", async (req, res) => {
+  const searchType = req.params.type.toUpperCase();
+  const response = await fetchData(
+    `${process.env.API_JIRA_HOST}/rest/api/2/search?jql=PROJECT+%3D+%22${searchType}%22+AND+type+%3D+Story+AND++statusCategory+%21%3D+Done&maxResults=60`
+  );
+  return res.json(response);
+});
+
 router.get("/ticketList", async (req, res) => {
   res.setHeader("Content-Type", "application/json");
 
   try {
     const response = await fetchData(
-      `${process.env.API_JIRA_HOST}/rest/api/2/search?jql=PROJECT+%3D+%22Self+Service+Journey%22+AND+type+%3D+Story+AND++statusCategory+%21%3D+Done&maxResults=60`
+      `${process.env.API_JIRA_HOST}/rest/api/2/search?jql=PROJECT+%3D+%22SSJ%22+AND+type+%3D+Story+AND++statusCategory+%21%3D+Done&maxResults=60`
     );
 
     const result = await normaliseResponse(response);
@@ -95,7 +103,7 @@ const normaliseResponse = async (data) => {
   }
 
   return results
-}
+};
 
 const fetchData = async (url) => {
   // can await other promises here and use loops or whatever.
