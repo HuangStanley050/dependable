@@ -99,7 +99,9 @@ const normaliseIssues = async (issueIds, results) => {
     const normalisedIssues = await Promise.all(issues);
 
     normalisedIssues.forEach((normalisedIssue) => {
-      results.push(normalisedIssue);
+      if (normalisedIssue) {
+        results.push(normalisedIssue);
+      }
     });
 
     const deps = normalisedIssues.flatMap(
