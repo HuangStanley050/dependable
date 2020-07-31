@@ -4,69 +4,48 @@ Hackathon project to attempt to model inter-team dependencies transparently and 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Screenshot
 
-In the project directory, you can run:
+![screen1](./media/screenshot1.png)
 
-### `yarn start`
+![screen2](./media/screenshot2.png)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![screen3](./media/screenshot3.png)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+![screen4](./media/screenshot4.png)
 
-### `yarn test`
+## Installation
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+git clone <projectName>
 
-### `yarn build`
+cd into ./BFF and run npm install
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+cd back to ./ and run npm install
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Open a separate terminal, change directory into ./BFF folder, run npm start for BFF
 
-### `yarn eject`
+In the root project folder, run npm start for client
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## UI explaination
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Gantt Chart
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Displays tickets in graphical form and shows depended tickets with arrows. Plus a time line at the bottom of the chart.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Ticket List
 
-## Learn More
+Shows a table of tickets and dependencies in text form with the dependency displayed below.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Contributors
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Thomas Burleigh**
 
-### Code Splitting
+- **Joseph Garner**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- **Jo Peyper**
 
-### Analyzing the Bundle Size
+- **Maysam Tayyeb**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- **Stanley Huang**
