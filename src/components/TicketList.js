@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import { format } from 'date-fns'
+import { format } from "date-fns";
+import naturalCompare from "natural-compare";
 import DataContext from "./DataContext";
 import canBeIncluded from "../utils/canBeIncluded";
 import getDependencies from "../utils/getDependencies";
@@ -22,7 +23,10 @@ const TicketList = ({ sourceProjectKey }) => {
     return null;
   }
 
-  const data = processData(rawData, sourceProjectKey);
+  const data = processData(rawData, sourceProjectKey).sort((story1, story2) =>
+    naturalCompare(story1.key, story2.key)
+  );
+  console.log(data);
 
   if (data.length === 0) {
     return null;
@@ -37,22 +41,36 @@ const TicketList = ({ sourceProjectKey }) => {
           due to one or more unscheduled dependencies:
         </p>
 
-      {data.map((story) => (
+        {data.map((story) => (
           <p key={story.key}>
-            <span style={{ color: COLOUR_MAP[story.project.key] }}>{story.key} - {story.title}</span>: Dependent on
+            <span style={{ color: COLOUR_MAP[story.project.key] }}>
+              {story.key} - {story.title}
+            </span>
+            : Dependent on
             <br />
             <ul style={{ marginLeft: "40px" }}>
-              {getDependencies(story.dependencies, rawData).map(
-                (dependency) => (
+              {getDependencies(story.dependencies, rawData)
+                .sort((dependency1, dependency2) =>
+                  naturalCompare(
+                    dependency1.project.key,
+                    dependency2.project.key
+                  )
+                )
+                .map((dependency) => (
                   <li key={dependency.key}>
-                    <span style={{ color: COLOUR_MAP[dependency.project.key] }}>{dependency.key} - {dependency.title}</span> (
+                    <span style={{ color: COLOUR_MAP[dependency.project.key] }}>
+                      {dependency.key} - {dependency.title}
+                    </span>{" "}
+                    (
                     {dependency.sprint?.endDate
-                      ? `Scheduled to finish ${format(new Date(dependency.sprint.endDate), 'dd/MM/yyyy')}`
+                      ? `Scheduled to finish ${format(
+                          new Date(dependency.sprint.endDate),
+                          "dd/MM/yyyy"
+                        )}`
                       : "unscheduled"}
                     )
                   </li>
-                )
-              )}
+                ))}
             </ul>
           </p>
         ))}
@@ -68,6 +86,6 @@ const COLOUR_MAP = {
   FIRE: "#538cf5",
   LOK: "#0f924e",
   SSJ: "#d63b30",
-}
+};
 
 export default TicketList;
