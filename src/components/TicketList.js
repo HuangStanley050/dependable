@@ -39,13 +39,13 @@ const TicketList = ({ sourceProjectKey }) => {
 
       {data.map((story) => (
           <p key={story.key}>
-            <span style={{ fontWeight: 800 }}>{story.key} - {story.title}: Dependent on</span>
+            <span style={{ color: COLOUR_MAP[story.project.key] }}>{story.key} - {story.title}</span>: Dependent on
             <br />
-            <ul class="dependency-list">
+            <ul style={{ marginLeft: "40px" }}>
               {getDependencies(story.dependencies, rawData).map(
                 (dependency) => (
                   <li key={dependency.key}>
-                    {dependency.key} - {dependency.title} (
+                    <span style={{ color: COLOUR_MAP[dependency.project.key] }}>{dependency.key} - {dependency.title}</span> (
                     {dependency.sprint?.endDate
                       ? `Scheduled to finish ${format(new Date(dependency.sprint.endDate), 'dd/MM/yyyy')}`
                       : "unscheduled"}
@@ -61,5 +61,13 @@ const TicketList = ({ sourceProjectKey }) => {
     </div>
   );
 };
+
+const COLOUR_MAP = {
+  CGU: "#8000f0",
+  CHR: "#f09c00",
+  FIRE: "#538cf5",
+  LOK: "#0f924e",
+  SSJ: "#d63b30",
+}
 
 export default TicketList;
