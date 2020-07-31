@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div>
-      <HeaderBanner />
+      <HeaderBanner/>
       <Main>
         <Container fluid>
           <Row>
@@ -23,26 +23,24 @@ function App() {
               ever since the 1500s
             </p>
           </Row>
-          <SearchBox doSearch={setSearch} />
-          <Suspense fallback="Loading...">
-            <DataFetcher search={search}>
-              <Row>
-                <h3>Gantt Chart</h3>
-              </Row>
-              <Row>
-                <div className="graph">
-                  <Gantt />
-                </div>
-              </Row>
-              <Row>
-                <h3>Ticket List</h3>
-                <TicketList />
-              </Row>
-            </DataFetcher>
-          </Suspense>
+          <SearchBox doSearch={setSearch}/>
+          <DataFetcher search={search}>
+            <Row>
+              <h3>Gantt Chart</h3>
+            </Row>
+            <Row>
+              <div className="graph">
+                <Gantt sourceProjectKey={search} />
+              </div>
+            </Row>
+            <Row>
+              <h3>Ticket List</h3>
+              <TicketList sourceProjectKey={search} />
+            </Row>
+          </DataFetcher>
         </Container>
       </Main>
-      <FooterBanner />
+      <FooterBanner/>
     </div>
   );
 }

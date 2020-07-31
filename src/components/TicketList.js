@@ -11,16 +11,14 @@ const processData = (stories, sourceProjectKey) => {
   return sourceStories;
 };
 
-const TicketList = () => {
-  console.log("here");
+const TicketList = ({ sourceProjectKey }) => {
   const rawData = useContext(DataContext);
-  console.log("rawData", rawData);
+
   if (!rawData) {
     return null;
   }
 
-  const data = processData(rawData, "SSJ");
-  console.log("data", data);
+  const data = processData(rawData, sourceProjectKey);
 
   if (data.length === 0) {
     return <p>All stories are able to be scheduled.</p>;

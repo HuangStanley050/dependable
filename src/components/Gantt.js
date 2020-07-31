@@ -38,13 +38,13 @@ const processData = (stories, sourceProjectKey) => {
   ]);
 };
 
-const Gantt = () => {
+const Gantt = ({ sourceProjectKey }) => {
   const rawData = useContext(DataContext);
   if (!rawData) {
     return null;
   }
 
-  const data = processData(rawData, "SSJ");
+  const data = processData(rawData, sourceProjectKey);
 
   if (data.length === 0) {
     return <p>No stories are able to be scheduled!</p>;
