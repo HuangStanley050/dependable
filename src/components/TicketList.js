@@ -51,8 +51,8 @@ const TicketList = ({ sourceProjectKey }) => {
               {getDependencies(story.dependencies, rawData)
                 .sort((dependency1, dependency2) =>
                   naturalCompare(
-                    dependency1.project.key,
-                    dependency2.project.key
+                    dependency1.key,
+                    dependency2.key
                   )
                 )
                 .map((dependency) => (
