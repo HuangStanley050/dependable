@@ -7,22 +7,28 @@ function DataFetcher({ children, search }) {
     search,
   ]);
 
-  return (
-    <>
-      {loading && <p>Loading...</p>}
-      {error && (
-        <p>
-          Something went wrong with the search. Please refresh the page and try
-          again.
-        </p>
-      )}
-      {(data?.length || 0) > 0 ? (
-        <DataContext.Provider value={data}>{children}</DataContext.Provider>
-      ) : (
-        <p>We did not find any data for that project code.</p>
-      )}
-    </>
-  );
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return (
+      <p>
+        Something went wrong with the search. Please refresh the page and try
+        again.
+      </p>
+    );
+  }
+
+  if(!search) {
+    return <p>Please search for your project code above.</p>
+  }
+
+  if ((data?.length || 0) === 0) {
+    return <p>We did not find any data for that project code.</p>;
+  }
+
+  return <DataContext.Provider value={data}>{children}</DataContext.Provider>;
 }
 
 export default DataFetcher;
