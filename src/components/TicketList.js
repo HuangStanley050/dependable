@@ -80,11 +80,11 @@ const TicketList = ({ sourceProjectKey }) => {
 };
 
 const COLOUR_MAP = {
-  CGU: "#8000f0",
-  CHR: "#f09c00",
-  FIRE: "#538cf5",
-  LOK: "#0f924e",
-  SSJ: "#d63b30",
+  CGU: "#8000f0", // purple
+  CHR: "#d63b30", // red
+  FIRE: "#0f924e", // green
+  LOK: "#f09c00", // yellow
+  SSJ: "#538cf5", // blue
 };
 
 export default TicketList;
