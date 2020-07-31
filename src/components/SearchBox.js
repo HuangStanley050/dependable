@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Input, Button } from "@iag-packages/chroma-react/lib/components";
+import { Input, Button, Form } from "@iag-packages/chroma-react/lib/components";
 import { Row } from "@iag-packages/chroma-react/lib/layouts";
 
 function SearchBox({ doSearch }) {
@@ -9,18 +9,22 @@ function SearchBox({ doSearch }) {
   };
 
   return (
-    <Row justifyContent="end">
-      <Input placeholder="Search" onChange={inputSearch} />
-      <Button
-        id="primaryButton"
-        primary
-        onClick={() => {
-          doSearch(search);
-        }}
-      >
-        Search
-      </Button>
-    </Row>
+    <Form onSubmit={(e) => {
+      e.preventDefault()
+
+      doSearch(search);
+    }}>
+      <Row justifyContent="end">
+        <Input placeholder="Search" onChange={inputSearch}/>
+        <Button
+          id="primaryButton"
+          primary
+          type="submit"
+        >
+          Search
+        </Button>
+      </Row>
+    </Form>
   );
 }
 
