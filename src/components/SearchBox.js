@@ -14,7 +14,6 @@ function SearchBox({ doSearch }) {
 
       doSearch(search);
     }}>
-      <Row justifyContent="end">
         <Input placeholder="Search" onChange={inputSearch}/>
         <Button
           id="primaryButton"
@@ -23,7 +22,6 @@ function SearchBox({ doSearch }) {
         >
           Search
         </Button>
-      </Row>
     </Form>
   );
 }
