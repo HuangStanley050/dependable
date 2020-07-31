@@ -4,14 +4,22 @@ const requestPromise = require("request-promise");
 
 // const cache = {}
 
+router.post("/ticketType/:type", async (req, res) => {
+  const searchType = req.params.type.toUpperCase();
+  const response = await fetchData(
+    `${process.env.API_JIRA_HOST}/rest/api/2/search?jql=PROJECT+%3D+%22${searchType}%22+AND+type+%3D+Story+AND++statusCategory+%21%3D+Done&maxResults=60`
+  );
+  return res.json(response);
+});
+
 router.get("/ticketList", async (req, res) => {
   res.setHeader("Content-Type", "application/json");
 
   try {
     const response = await fetchData(
-      `${process.env.API_JIRA_HOST}/rest/api/2/search?jql=PROJECT+%3D+%22Self+Service+Journey%22+AND+type+%3D+Story+AND++statusCategory+%21%3D+Done&maxResults=60`
+      `${process.env.API_JIRA_HOST}/rest/api/2/search?jql=PROJECT+%3D+%22SSJ%22+AND+type+%3D+Story+AND++statusCategory+%21%3D+Done&maxResults=60`
     );
-
+    //console.log(response);
     const result = await normaliseList(response);
 
     res.json(result);
@@ -42,20 +50,20 @@ const normaliseIssue = async (issueId) => {
   //   await normaliseIssue(dependencyID)
   // }
 
-//   return [{
-//     key: issue.key,
-//     project: {
-//       key: issue.fields.project.key,
-//       name: issue.fields.project.name,
-//     },
-//     epic: issue.fields.customfield_12100,
-//     points: issue.fields.customfield_10002,
-//     estimatedDurationDays: 14,
-//     priority: issue.fields.priority.name,
-//     dependencies: issuelinks.map((issuelink) => issuelink.inwardIssue.key),
-//   },
-//   ...dependencies
-// ];
+  //   return [{
+  //     key: issue.key,
+  //     project: {
+  //       key: issue.fields.project.key,
+  //       name: issue.fields.project.name,
+  //     },
+  //     epic: issue.fields.customfield_12100,
+  //     points: issue.fields.customfield_10002,
+  //     estimatedDurationDays: 14,
+  //     priority: issue.fields.priority.name,
+  //     dependencies: issuelinks.map((issuelink) => issuelink.inwardIssue.key),
+  //   },
+  //   ...dependencies
+  // ];
 
   return {
     key: issue.key,
@@ -68,7 +76,7 @@ const normaliseIssue = async (issueId) => {
     estimatedDurationDays: 14,
     priority: issue.fields.priority.name,
     dependencies: issuelinks.map((issuelink) => issuelink.inwardIssue.key),
-  }
+  };
 };
 
 const normaliseList = async (data) => {
@@ -78,7 +86,7 @@ const normaliseList = async (data) => {
 
   // flatten results into non nested array
 
-  return results
+  return results;
 };
 
 const fetchData = async (url) => {
