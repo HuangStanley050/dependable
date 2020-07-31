@@ -1,5 +1,5 @@
 import React from "react";
-// import useFetch from "use-http";
+import useFetch from "use-http";
 import DataContext from "./DataContext";
 
 const data = [
@@ -89,12 +89,12 @@ const data = [
   },
 ];
 
-// const options = {
-//   suspense: true,
-// };
+const options = {
+  suspense: true,
+};
 
 function DataFetcher({ children }) {
-  // const { data } = useFetch("/ticketList", options, []);
+  const { data } = useFetch("/ticketList", options, []);
 
   return <DataContext.Provider value={data}>{children}</DataContext.Provider>;
 }
