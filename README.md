@@ -30,6 +30,18 @@ cd ..
 yarn
 ```
 
+Setup the BFFs .env file
+
+```
+echo "API_JIRA_HOST=https://jira-uat.auiag.corp
+API_USERNAME=$(whoami)
+API_SECRET=" > bff/.env
+```
+
+Then open `bff/.env` and input your password
+
+If you want to use the production Jira, change the host to `https://jira.iag.com.au`
+
 ## Usage
 
 Use two terminals to start the UI and BFF
