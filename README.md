@@ -20,36 +20,45 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Installation
 
-git clone <projectName>
+```
+git clone <clone url>
 
-cd into ./BFF and run npm install
+cd bff
+yarn
 
-cd back to ./ and run npm install
+cd ..
+yarn
+```
 
 ## Usage
 
-Open a separate terminal, change directory into ./BFF folder, run npm start for BFF
+Use two terminals to start the UI and BFF
 
-In the root project folder, run npm start for client
+```
+cd bff
+yarn start
+```
 
-## UI explaination
+```
+yarn start
+```
 
-### Gantt Chart
+Your browser should open to http://localhost:3000
 
-Displays tickets in graphical form and shows depended tickets with arrows. Plus a time line at the bottom of the chart.
+## UI explanation
 
-### Ticket List
+### Project View
 
-Shows a table of tickets and dependencies in text form with the dependency displayed below.
+Enter your JIRA project id and search for your tickets, displayed in a graphical form and shows depended tickets with arrows. Plus a time line at the bottom of the chart.
+
+### Unscheduled Features
+
+Shows a table of tickets and dependencies there were unable to be incided in the project view to help start conversations.
 
 ### Contributors
 
 - **Thomas Burleigh**
-
 - **Joseph Garner**
-
 - **Jo Peyper**
-
 - **Maysam Tayyeb**
-
 - **Stanley Huang**
