@@ -12,7 +12,7 @@ router.get("/ticketList", async (req, res) => {
   }
   try {
     const response = await fetchData(
-      `${process.env.API_JIRA_HOST}/rest/api/2/search?jql=PROJECT+%3D+%22Self+Service+Journey%22+AND+type%20%3D%20Story%20AND%20key%20in%20(ssj-74%2CSSJ-54%2CSSJ-70%2CSSJ-57%2CSSJ-121%2CSSJ-73%2C%20SSJ-42%2C%20SSJ-68%2CSSJ-77%2CSSJ-78%2CSSJ-127%2CSSJ-72)+AND++statusCategory+%21%3D+Done&maxResults=60`
+      `${process.env.API_JIRA_HOST}/rest/api/2/search?jql=PROJECT+%3D+%22${searchType}%22+AND+type+%3D+Story+AND++statusCategory+%21%3D+Done&maxResults=60`
     );
 
     const result = await normaliseResponse(response);
@@ -28,27 +28,42 @@ router.get("/ticketList", async (req, res) => {
 });
 
 const getSprint = (sprintsArray) => {
-  let sprint = {}
+  let sprint = {};
   if (sprintsArray) {
-    const sprints = sprintsArray.map(sprint => {
-      return sprint.match(/startDate=(\d{4}-\d{2}-\d{2}).*endDate=(\d{4}-\d{2}-\d{2})/i) ||
-        sprint.match(/(\d{1,2}\/\d{1,2}) - (\d{1,2}\/\d{1,2}),startDate/i)
+    const sprints = sprintsArray.map((sprint) => {
+      return (
+        sprint.match(
+          /startDate=(\d{4}-\d{2}-\d{2}).*endDate=(\d{4}-\d{2}-\d{2})/i
+        ) ||
+        sprint
+          .match(/(\d{1,2}\/\d{1,2}) - (\d{1,2}\/\d{1,2}),startDate/i)
           .map((str, index) => {
-            if (index === 0) return ""
+            if (index === 0) return "";
 
-            return str.replace(/(\d{1,2})\/(\d{1,2})/, (matcher, p1, p2) => ["2020", p2.padStart(2, '0'), p1].join('-'))
+            return str.replace(/(\d{1,2})\/(\d{1,2})/, (matcher, p1, p2) =>
+              ["2020", p2.padStart(2, "0"), p1].join("-")
+            );
           })
-  })
+      );
+    });
 
-    sprint = sprints
-      .reduce((sprint, currentMatch) => ({
-          startDate: sprint?.startDate < currentMatch?.[1] ? sprint?.startDate : currentMatch?.[1],
-          endDate: sprint?.endDate > currentMatch?.[2] ? sprint?.endDate : currentMatch?.[2]
-        }), null)
+    sprint = sprints.reduce(
+      (sprint, currentMatch) => ({
+        startDate:
+          sprint?.startDate < currentMatch?.[1]
+            ? sprint?.startDate
+            : currentMatch?.[1],
+        endDate:
+          sprint?.endDate > currentMatch?.[2]
+            ? sprint?.endDate
+            : currentMatch?.[2],
+      }),
+      null
+    );
   }
 
-  return sprint
-}
+  return sprint;
+};
 
 const normaliseIssue = async (issueId, results) => {
   if (cache[issueId]) {
@@ -81,13 +96,16 @@ const normaliseIssue = async (issueId, results) => {
       dependencies: issuelinks.map((issuelink) => issuelink.inwardIssue.key),
     };
 
-    if (issue.fields.customfield_11101 && issue.fields.customfield_11101.length) {
-      normalisedIssue.sprint = getSprint(issue.fields.customfield_11101)
+    if (
+      issue.fields.customfield_11101 &&
+      issue.fields.customfield_11101.length
+    ) {
+      normalisedIssue.sprint = getSprint(issue.fields.customfield_11101);
     }
 
     cache[issueId] = normalisedIssue;
 
-    return normalisedIssue
+    return normalisedIssue;
   } catch (e) {
     console.log("normaliseIssue failed: ", e);
   }
